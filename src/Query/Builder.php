@@ -548,7 +548,7 @@ class Builder extends BaseBuilder
     /**
      * @inheritdoc
      */
-    public function insert(array $values)
+    public function insert(array $values,array $options =[])
     {
         // Since every insert gets treated like a batch insert, we will have to detect
         // if the user is inserting a single document or an array of documents.
@@ -568,7 +568,7 @@ class Builder extends BaseBuilder
         }
 
         // Batch insert
-        $result = $this->collection->insertMany($values);
+        $result = $this->collection->insertMany($values,$options);
 
         return 1 == (int) $result->isAcknowledged();
     }
