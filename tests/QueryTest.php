@@ -239,17 +239,6 @@ class QueryTest extends TestCase
         $this->assertEquals(35, $user->age);
     }
 
-    public function testStringableOrder(): void
-    {
-        $age = str('age');
-
-        $user = User::whereNotNull('age')->orderBy($age, 'asc')->first();
-        $this->assertEquals(13, $user->age);
-
-        $user = User::whereNotNull('age')->orderBy($age, 'desc')->first();
-        $this->assertEquals(37, $user->age);
-    }
-
     public function testGroupBy(): void
     {
         $users = User::groupBy('title')->get();
@@ -392,29 +381,6 @@ class QueryTest extends TestCase
         $this->assertNull($results->first()->title);
         $this->assertEquals(9, $results->total());
         $this->assertEquals(1, $results->currentPage());
-    }
-
-    public function testCursorPaginate(): void
-    {
-        $results = User::cursorPaginate(2);
-        $this->assertEquals(2, $results->count());
-        $this->assertNotNull($results->first()->title);
-        $this->assertNotNull($results->nextCursor());
-        $this->assertTrue($results->onFirstPage());
-
-        $results = User::cursorPaginate(2, ['name', 'age']);
-        $this->assertEquals(2, $results->count());
-        $this->assertNull($results->first()->title);
-
-        $results = User::orderBy('age', 'desc')->cursorPaginate(2, ['name', 'age']);
-        $this->assertEquals(2, $results->count());
-        $this->assertEquals(37, $results->first()->age);
-        $this->assertNull($results->first()->title);
-
-        $results = User::whereNotNull('age')->orderBy('age', 'asc')->cursorPaginate(2, ['name', 'age']);
-        $this->assertEquals(2, $results->count());
-        $this->assertEquals(13, $results->first()->age);
-        $this->assertNull($results->first()->title);
     }
 
     public function testUpdate(): void

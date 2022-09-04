@@ -16,7 +16,6 @@ trait HybridRelations
 {
     /**
      * Define a one-to-one relationship.
-     *
      * @param string $related
      * @param string $foreignKey
      * @param string $localKey
@@ -40,7 +39,6 @@ trait HybridRelations
 
     /**
      * Define a polymorphic one-to-one relationship.
-     *
      * @param string $related
      * @param string $name
      * @param string $type
@@ -66,7 +64,6 @@ trait HybridRelations
 
     /**
      * Define a one-to-many relationship.
-     *
      * @param string $related
      * @param string $foreignKey
      * @param string $localKey
@@ -90,7 +87,6 @@ trait HybridRelations
 
     /**
      * Define a polymorphic one-to-many relationship.
-     *
      * @param string $related
      * @param string $name
      * @param string $type
@@ -121,7 +117,6 @@ trait HybridRelations
 
     /**
      * Define an inverse one-to-one or many relationship.
-     *
      * @param string $related
      * @param string $foreignKey
      * @param string $otherKey
@@ -165,7 +160,6 @@ trait HybridRelations
 
     /**
      * Define a polymorphic, inverse one-to-one or many relationship.
-     *
      * @param string $name
      * @param string $type
      * @param string $id
@@ -210,7 +204,6 @@ trait HybridRelations
 
     /**
      * Define a many-to-many relationship.
-     *
      * @param string $related
      * @param string $collection
      * @param string $foreignKey
@@ -284,7 +277,6 @@ trait HybridRelations
 
     /**
      * Get the relationship name of the belongs to many.
-     *
      * @return string
      */
     protected function guessBelongsToManyRelation()
