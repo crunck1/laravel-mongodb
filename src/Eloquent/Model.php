@@ -21,30 +21,35 @@ abstract class Model extends BaseModel
 
     /**
      * The collection associated with the model.
+     *
      * @var string
      */
     protected $collection;
 
     /**
      * The primary key for the model.
+     *
      * @var string
      */
     protected $primaryKey = '_id';
 
     /**
      * The primary key type.
+     *
      * @var string
      */
     protected $keyType = 'string';
 
     /**
      * The parent relation instance.
+     *
      * @var Relation
      */
     protected $parentRelation;
 
     /**
      * Custom accessor for the model's id.
+     *
      * @param mixed $value
      * @return mixed
      */
@@ -150,7 +155,11 @@ abstract class Model extends BaseModel
         }
 
         // This checks for embedded relation support.
-        if (method_exists($this, $key) && ! method_exists(self::class, $key)) {
+        if (
+            method_exists($this, $key)
+            && ! method_exists(self::class, $key)
+            && ! $this->hasAttributeGetMutator($key)
+        ) {
             return $this->getRelationValue($key);
         }
 
@@ -269,6 +278,7 @@ abstract class Model extends BaseModel
 
     /**
      * Remove one or more fields.
+     *
      * @param mixed $columns
      * @return int
      */
@@ -314,6 +324,7 @@ abstract class Model extends BaseModel
 
     /**
      * Remove one or more values from an array.
+     *
      * @param string $column
      * @param mixed $values
      * @return mixed
@@ -332,6 +343,7 @@ abstract class Model extends BaseModel
 
     /**
      * Append one or more values to the underlying attribute value and sync with original.
+     *
      * @param string $column
      * @param array $values
      * @param bool $unique
@@ -356,6 +368,7 @@ abstract class Model extends BaseModel
 
     /**
      * Remove one or more values to the underlying attribute value and sync with original.
+     *
      * @param string $column
      * @param array $values
      */
@@ -388,6 +401,7 @@ abstract class Model extends BaseModel
 
     /**
      * Set the parent relation.
+     *
      * @param \Illuminate\Database\Eloquent\Relations\Relation $relation
      */
     public function setParentRelation(Relation $relation)
@@ -397,6 +411,7 @@ abstract class Model extends BaseModel
 
     /**
      * Get the parent relation.
+     *
      * @return \Illuminate\Database\Eloquent\Relations\Relation
      */
     public function getParentRelation()
@@ -432,6 +447,7 @@ abstract class Model extends BaseModel
 
     /**
      * Get the queueable relationships for the entity.
+     *
      * @return array
      */
     public function getQueueableRelations()
@@ -461,6 +477,7 @@ abstract class Model extends BaseModel
 
     /**
      * Get loaded relations for the instance without parent.
+     *
      * @return array
      */
     protected function getRelationsWithoutParent()
@@ -477,6 +494,7 @@ abstract class Model extends BaseModel
     /**
      * Checks if column exists on a table.  As this is a document model, just return true.  This also
      * prevents calls to non-existent function Grammar::compileColumnListing().
+     *
      * @param string $key
      * @return bool
      */
