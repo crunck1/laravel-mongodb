@@ -9,7 +9,6 @@ class MongoFailedJobProvider extends DatabaseFailedJobProvider
 {
     /**
      * Log a failed job into storage.
-     *
      * @param string $connection
      * @param string $queue
      * @param string $payload
@@ -27,7 +26,6 @@ class MongoFailedJobProvider extends DatabaseFailedJobProvider
 
     /**
      * Get a list of all of the failed jobs.
-     *
      * @return object[]
      */
     public function all()
@@ -45,7 +43,6 @@ class MongoFailedJobProvider extends DatabaseFailedJobProvider
 
     /**
      * Get a single failed job.
-     *
      * @param mixed $id
      * @return object
      */
@@ -64,7 +61,6 @@ class MongoFailedJobProvider extends DatabaseFailedJobProvider
 
     /**
      * Delete a single failed job from storage.
-     *
      * @param mixed $id
      * @return bool
      */

@@ -6,7 +6,6 @@ use Jenssegers\Mongodb\Eloquent\Model as Eloquent;
 
 /**
  * Class Birthday.
- *
  * @property string $name
  * @property string $birthday
  * @property string $day

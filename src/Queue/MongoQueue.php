@@ -11,14 +11,12 @@ class MongoQueue extends DatabaseQueue
 {
     /**
      * The expiration time of a job.
-     *
      * @var int|null
      */
     protected $retryAfter = 60;
 
     /**
      * The connection name for the queue.
-     *
      * @var string
      */
     protected $connectionName;
@@ -58,7 +56,6 @@ class MongoQueue extends DatabaseQueue
      * This race condition can result in random jobs being run more then
      * once. To solve this we use findOneAndUpdate to lock the next jobs
      * record while flagging it as reserved at the same time.
-     *
      * @param string|null $queue
      * @return \StdClass|null
      */
@@ -94,7 +91,6 @@ class MongoQueue extends DatabaseQueue
 
     /**
      * Release the jobs that have been reserved for too long.
-     *
      * @param string $queue
      * @return void
      */
@@ -115,7 +111,6 @@ class MongoQueue extends DatabaseQueue
 
     /**
      * Release the given job ID from reservation.
-     *
      * @param string $id
      * @param int $attempts
      * @return void

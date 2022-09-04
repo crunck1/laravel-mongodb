@@ -24,7 +24,6 @@ class Builder extends \Illuminate\Database\Schema\Builder
 
     /**
      * Determine if the given collection exists.
-     *
      * @param string $name
      * @return bool
      */
@@ -51,7 +50,6 @@ class Builder extends \Illuminate\Database\Schema\Builder
 
     /**
      * Modify a collection on the schema.
-     *
      * @param string $collection
      * @param Closure $callback
      * @return bool
@@ -129,7 +127,6 @@ class Builder extends \Illuminate\Database\Schema\Builder
 
     /**
      * Get collection.
-     *
      * @param string $name
      * @return bool|\MongoDB\Model\CollectionInfo
      */
@@ -148,7 +145,6 @@ class Builder extends \Illuminate\Database\Schema\Builder
 
     /**
      * Get all of the collections names for the database.
-     *
      * @return array
      */
     protected function getAllCollections()
